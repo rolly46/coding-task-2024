@@ -1,0 +1,12 @@
+
+<div *ngIf="contact != null; else noSelection">
+
+    <h3>The selected contact's last name is {{contact.lastName}}</h3>
+    
+</div>
+
+<ng-template #noSelection>
+    <h3>
+        No Contact Selected
+    </h3>
+</ng-template>
