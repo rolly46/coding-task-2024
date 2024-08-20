@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State } from './state';
+import { appStarted } from './state/actions';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'coding-task-2024';
+
+  constructor(
+    private store : Store<State>
+  ){ }
+
+  ngOnInit(){
+    this.store.dispatch(appStarted())
+  }
+
 }

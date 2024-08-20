@@ -1,8 +1,8 @@
 
-<div *ngIf="contact != null; else noSelection">
-
-    <h3>The selected contact's last name is {{contact.lastName}}</h3>
-    
+<div class="contact-card" *ngIf="contact != null; else noSelection">
+    <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>
+    <p><strong>Phone:</strong> {{ contact.phoneNumber }}</p>
+    <p><strong>Email:</strong> <a [href]="'mailto:' + contact.email">{{ contact.email }}</a></p>
 </div>
 
 <ng-template #noSelection>

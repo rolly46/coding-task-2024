@@ -6,6 +6,4 @@ export type Contact = {
     lastName : string,
     phoneNumber : string,
     email : string,
-    notes : string,
-    projectRoles : {project : string, role: Role}[]
 }

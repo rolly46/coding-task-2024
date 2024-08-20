@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
+import { State, selectActiveContact, selectContactList } from '../../state';
+import * as actions from '../../state/actions';
+
 
 @Component({
   selector: 'app-contact-list',
@@ -11,18 +15,22 @@ import { ContactService } from 'src/app/services/contact.service';
 export class ContactListComponent {
 
   contactList$: Observable<Contact[]>;
-  selectedContact: Contact | null;
+  activeContact$: Observable<Contact | undefined>;
 
-  constructor(private contactService : ContactService){
-    this.contactList$ = this.contactService.getContactList$()
-    this.selectedContact = null;
+  constructor(
+    private contactService : ContactService,
+    private store : Store<State>
+  ){
+    this.contactList$ = this.store.select(selectContactList)
+    this.activeContact$ = this.store.select(selectActiveContact);
   }
 
-  contactClicked(contact : Contact ){
-    //TODO: dispatch select contact action
-  
-    this.selectedContact = contact;
+  viewContactClicked(contactId : number ){
+    this.store.dispatch(actions.contactSelected({contactId}))
+  }
 
+  editContactClicked(contact : Contact){
+    this.store.dispatch(actions.editContactClicked({contact}))
   }
 
 

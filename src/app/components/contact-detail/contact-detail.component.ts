@@ -8,9 +8,8 @@ import { Contact } from 'src/app/models/contact.model';
 })
 export class ContactDetailComponent {
 
-  @Input() contact: Contact | null = null
+  @Input() contact?: Contact | null
 
   constructor(){}
-
 
 }
