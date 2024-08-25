@@ -26,7 +26,20 @@ In our main code base, you would expect to find this architecture replicated wit
 
 # Answers
 
-1. //Optionally provide any notes relating to question 1 here.
-2. //Optionally provide any notes relating to question 2 here.
-3. //Provide your answer to question 3 here.
+1. I utilised the simple Angular if directive within the template to display the loading container. I then used pure CSS to style it. 
+2. For question 2, I created a new effect to add the the ability to add a new contact. Since no contact is passed to the dialog, it is able adapt what text is displayed on it. E.g. 'Add User' rather than 'Edit Contact with ID: x'. The dialog has been refactored to reflect its new abilities.
+3. Handling an error in an effect can be resolved using a catchError operator (imported the rxjs library). For this project for example, if we wanted to add error handling to the  effect, it would look like this.
+```
+    saveContact$ = createEffect(()=> this.actions$.pipe(
+        ofType(actions.editContactConfrimed),
+        concatMap(action =>
+            this.contactService.saveContact$(action.contact).pipe(
+                map(contact => actions.contactSavedSuccess({contact})),
+                catchError(error => some sort of action to be done here) // Dispatch failure action on error
+            ),
+        )
+        
+    ))
+```
+
 4. //Provide your link or location of your file within the repo here.
