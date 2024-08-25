@@ -11,6 +11,7 @@
 ></app-contact-detail> -->
 
 <div *ngIf="((contactList$ | async)?.length!=0); else loading">
+  <button type="button" class="btn-primary" (click)="addContactClicked()">Add Contact</button>
   <div  *ngFor="let contact of contactList$ | async" class="contact-list-item">
     <h3>{{ contact.firstName }} {{ contact.lastName }}</h3>
     <div class="contact-actions">

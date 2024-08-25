@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, delay, of } from 'rxjs';
 import { Contact } from '../models/contact.model';
 import { MatDialog } from '@angular/material/dialog';
-import { ContactEditDialogComponent } from '../dialogs/contact-edit-dialog/contact-edit-dialog.component';
+import { ContactEditDialogComponent } from '../dialogs/contact-dialog/contact-dialog.component';
 import * as _ from 'lodash';
 
 @Injectable({
@@ -77,6 +77,14 @@ export class ContactService {
         contact
       }
     })
+
+    return dialogRef.afterClosed();
+
+  }
+
+  AddContactDialog$() : Observable<Contact> {
+
+    const dialogRef = this.dialog.open(ContactEditDialogComponent, {data: {}})
 
     return dialogRef.afterClosed();
 

@@ -17,6 +17,7 @@ export class ContactListComponent {
   contactList$: Observable<Contact[]>;
   activeContact$: Observable<Contact | undefined>;
 
+  // Create Selectors 
   constructor(
     private contactService : ContactService,
     private store : Store<State>
@@ -25,12 +26,17 @@ export class ContactListComponent {
     this.activeContact$ = this.store.select(selectActiveContact);
   }
 
+  // Actions
   viewContactClicked(contactId : number ){
     this.store.dispatch(actions.contactSelected({contactId}))
   }
 
   editContactClicked(contact : Contact){
     this.store.dispatch(actions.editContactClicked({contact}))
+  }
+
+  addContactClicked(){
+    this.store.dispatch(actions.addContactClicked())
   }
 
 

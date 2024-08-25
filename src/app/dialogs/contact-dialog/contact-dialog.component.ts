@@ -4,9 +4,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Contact } from 'src/app/models/contact.model';
 
 @Component({
-  selector: 'app-contact-edit-dialog',
-  templateUrl: './contact-edit-dialog.component.html',
-  styleUrls: ['./contact-edit-dialog.component.css']
+  selector: 'app-contact-dialog',
+  templateUrl: './contact-dialog.component.html',
+  styleUrls: ['./contact-dialog.component.css']
 })
 
 export class ContactEditDialogComponent {
@@ -44,5 +44,7 @@ export class ContactEditDialogComponent {
   onCancelClick() : void {
     this.dialogRef.close();
   }
+
+  
 
 }

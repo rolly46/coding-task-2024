@@ -17,7 +17,10 @@ export const contactSelected = createAction(
 
 export const editContactClicked = createAction(
     '[CONTACT DETAIL] Edit Contact Button Clicked',
-    props<{contact : Contact}>()
+    props<{contact : Contact}>());
+
+export const addContactClicked = createAction(
+    '[CONTACT DETAIL] Add Contact Button Clicked'
 );
 
 export const editContactConfrimed = createAction(
